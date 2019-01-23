@@ -1,13 +1,15 @@
+import { Box, Flex, Heading, Text } from 'rebass';
 import React, { Fragment } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-import { Heading, Flex, Box, Text } from 'rebass';
-import TextLoop from 'react-text-loop';
+import RubberBand from 'react-reveal/RubberBand';
 import { SectionLink } from 'react-scroll-section';
+import TextLoop from 'react-text-loop';
 import styled from 'styled-components';
+import { secondaryLight } from '../../colors';
 import Section from '../components/Section';
 import SocialLink from '../components/SocialLink';
-import MouseIcon from '../components/MouseIcon';
 import img from '../../media/landing-background.jpeg';
+import MouseIcon from '../components/BounceArrow';
 
 const LandingPageBg = styled.div`
   position: absolute;
@@ -42,15 +44,17 @@ const LandingPage = () => (
 
         return (
           <Fragment>
-            <Heading
-              textAlign="center"
-              as="h1"
-              color="primary"
-              fontSize={[5, 6, 8]}
-              mb={[3, 4, 5]}
-            >
-              {`Hello, I'm ${name}!`}
-            </Heading>
+            <RubberBand>
+              <Heading
+                textAlign="center"
+                as="h1"
+                color="primary"
+                fontSize={[5, 6, 8]}
+                mb={[3, 4, 5]}
+              >
+                {`Hello, I'm ${name}!`}
+              </Heading>
+            </RubberBand>
 
             <Heading
               as="h2"
@@ -61,7 +65,7 @@ const LandingPage = () => (
             >
               <TextLoop>
                 {roles.map(text => (
-                  <Text width={[300, 500]} key={text}>
+                  <Text color={secondaryLight} width={[300, 500]} key={text}>
                     {text}
                   </Text>
                 ))}

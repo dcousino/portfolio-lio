@@ -37,7 +37,7 @@ const ProfilePicture = styled(Image)`
   transition: all 0.25s ease-out;
 
   &:hover {
-    border-radius: 20%;
+    border-radius: 10%;
   }
 `;
 

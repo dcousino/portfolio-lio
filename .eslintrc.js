@@ -3,6 +3,7 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': 'off',
     'react/require-default-props': 'off',
+    'linebreak-style': 0,
   },
   parser: 'babel-eslint',
   env: {
