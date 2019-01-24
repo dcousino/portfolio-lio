@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "cleandir ./.cache && gatsby build",
+    "build:serve": "cleandir ./.cache && gatsby build && gatsby server",
     "develop": "cleandir ./.cache && gatsby develop",
     "start": "npm run develop",
     "lint": "eslint ./src",

@@ -107,7 +107,6 @@ const Project = ({
   name,
   description,
   projectUrl,
-  repositoryUrl,
   type,
   publishedDate,
   logo,
@@ -133,13 +132,6 @@ const Project = ({
               float: 'right',
             }}
           >
-            <Box mx={1} fontSize={5}>
-              <SocialLink
-                name="Check repository"
-                fontAwesomeIcon="github"
-                url={repositoryUrl}
-              />
-            </Box>
             <Box mx={1} fontSize={5}>
               <SocialLink
                 name="See project"
@@ -170,7 +162,6 @@ Project.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   projectUrl: PropTypes.string.isRequired,
-  repositoryUrl: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   publishedDate: PropTypes.string.isRequired,
   logo: PropTypes.shape({
@@ -182,7 +173,7 @@ Project.propTypes = {
 
 const Projects = () => (
   <Section.Container id="projects" Background={Background}>
-    <Section.Header name="Projects" icon="💻" Box="notebook" />
+    <Section.Header name="Work Experience" icon="💻" Box="notebook" />
     <StaticQuery
       query={graphql`
         query ProjectsQuery {
