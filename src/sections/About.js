@@ -55,8 +55,9 @@ const About = () => (
             }
             profile {
               title
-              image: resize(width: 450, quality: 100) {
+              image: fluid(maxWidth: 450) {
                 src
+                srcWebp
               }
             }
           }

@@ -8,41 +8,54 @@ import styled from 'styled-components';
 import { secondaryLight } from '../../colors';
 import Section from '../components/Section';
 import SocialLink from '../components/SocialLink';
-import img from '../../media/landing-background.jpeg';
 import MouseIcon from '../components/BounceArrow';
 
 const LandingPageBg = styled.div`
   position: absolute;
   z-index: -2;
-  background-image: url(${img});
-  width: 100vw;
+  background-image: url(${props => props.img});
+  width: 100%;
+  background-position: center;
   height: 100vh;
+  background-size: cover;
   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.6);
 `;
 
-const Background = () => <LandingPageBg />;
+const Background = img => <LandingPageBg img={img} />;
 
 const LandingPage = () => (
-  <Section.Container id="home" Background={Background}>
-    <StaticQuery
-      query={graphql`
-        query SiteTitleQuery {
-          contentfulAbout {
+  <StaticQuery
+    query={graphql`
+      query SiteTitleQuery {
+        contentfulAbout {
+          name
+          roles
+          socialLinks {
+            id
+            url
             name
-            roles
-            socialLinks {
-              id
-              url
-              name
-              fontAwesomeIcon
+            fontAwesomeIcon
+          }
+        }
+        backgroundImg: file(relativePath: { eq: "landing-background.webp" }) {
+          childImageSharp {
+            fluid(maxWidth: 1920) {
+              ...GatsbyImageSharpFluid
             }
           }
         }
-      `}
-      render={data => {
-        const { name, socialLinks, roles } = data.contentfulAbout;
+      }
+    `}
+    render={data => {
+      const { name, socialLinks, roles } = data.contentfulAbout;
 
-        return (
+      return (
+        <Section.Container
+          id="home"
+          Background={() =>
+            Background(data.backgroundImg.childImageSharp.fluid.src)
+          }
+        >
           <Fragment>
             <RubberBand>
               <Heading
@@ -83,10 +96,10 @@ const LandingPage = () => (
               {({ onClick }) => <MouseIcon onClick={onClick} />}
             </SectionLink>
           </Fragment>
-        );
-      }}
-    />
-  </Section.Container>
+        </Section.Container>
+      );
+    }}
+  />
 );
 
 export default LandingPage;

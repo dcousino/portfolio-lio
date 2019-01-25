@@ -30,7 +30,7 @@ const Helmet = ({ theme = {} }) => (
     `}
     render={data => {
       const { name, description, profile } = data.contentfulAbout;
-      const title = `${name} Portofolio`;
+      const title = `${name} Portfolio`;
 
       return (
         <ReactHelmet>
@@ -74,7 +74,6 @@ const Helmet = ({ theme = {} }) => (
             sizes="16x16"
             href={profile.favicon16.src}
           />
-
           <link
             href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
             rel="stylesheet"
