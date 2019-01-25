@@ -34,13 +34,18 @@ Container.propTypes = {
   Background: PropTypes.func,
 };
 
-const Header = ({ name, icon = '', label = '' }) => (
+const Header = ({ name, icon = '' }) => (
   <Slide left>
     <Heading color="secondaryDark" mb={4}>
       <LinkAnimated selected>
         {name}
         {icon && (
-          <span role="img" aria-label={label} style={{ marginLeft: '10px' }}>
+          <span
+            role="img"
+            alt="headerlink"
+            aria-label={name}
+            style={{ marginLeft: '10px' }}
+          >
             {icon}
           </span>
         )}
@@ -52,7 +57,6 @@ const Header = ({ name, icon = '', label = '' }) => (
 Header.propTypes = {
   name: PropTypes.string.isRequired,
   icon: PropTypes.string,
-  label: PropTypes.string,
 };
 
 export default {

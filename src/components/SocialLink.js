@@ -1,7 +1,7 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import { Link } from 'rebass';
-import { Tooltip } from 'react-tippy';
+import Tooltip from 'rc-tooltip';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -15,8 +15,19 @@ const IconLink = styled(Link)`
 `;
 
 const SocialLink = ({ fontAwesomeIcon, name, url }) => (
-  <Tooltip title={name} position="bottom" trigger="mouseenter">
-    <IconLink href={url} target="_blank">
+  <Tooltip
+    id={name}
+    title={name}
+    placement="bottom"
+    trigger={['mouseenter']}
+    overlay={<span>tooltip</span>}
+  >
+    <IconLink
+      href={url}
+      target="_blank"
+      aria-label={fontAwesomeIcon}
+      rel="noopener noreferrer"
+    >
       <FontAwesome name={fontAwesomeIcon} />
     </IconLink>
   </Tooltip>

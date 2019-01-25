@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Card as CardRebass } from 'rebass';
+import { secondaryVeryLight } from '../../colors';
 
 export const CardContainer = styled.div`
   display: grid;
@@ -17,7 +18,7 @@ export const CardContainer = styled.div`
 `;
 
 export const Card = styled(CardRebass).attrs({
-  bg: 'white',
+  bg: secondaryVeryLight,
   boxShadow: 0,
   borderRadius: 8,
 })`

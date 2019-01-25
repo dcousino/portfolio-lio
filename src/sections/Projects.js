@@ -7,42 +7,10 @@ import Fade from 'react-reveal/Fade';
 import Section from '../components/Section';
 import { CardContainer, Card } from '../components/Card';
 import SocialLink from '../components/SocialLink';
-import Triangle from '../components/Triangle';
 import ImageSubtitle from '../components/ImageSubtitle';
 import Hide from '../components/Hide';
 
-const Background = () => (
-  <div>
-    <Triangle
-      color="secondaryLight"
-      height={['80vh', '80vh']}
-      width={['100vw', '100vw']}
-      invertX
-    />
-
-    <Triangle
-      color="background"
-      height={['50vh', '20vh']}
-      width={['50vw', '50vw']}
-      invertX
-    />
-
-    <Triangle
-      color="primaryDark"
-      height={['25vh', '40vh']}
-      width={['75vw', '60vw']}
-      invertX
-      invertY
-    />
-
-    <Triangle
-      color="backgroundDark"
-      height={['25vh', '20vh']}
-      width={['100vw', '100vw']}
-      invertY
-    />
-  </div>
-);
+const Background = () => <div />;
 
 const CARD_HEIGHT = '200px';
 
@@ -140,17 +108,11 @@ const Project = ({
               />
             </Box>
           </Flex>
-          <ImageSubtitle
-            bg="primaryLight"
-            color="white"
-            y="bottom"
-            x="right"
-            round
-          >
+          <ImageSubtitle bg="primary" color="white" y="bottom" x="right" round>
             {type}
           </ImageSubtitle>
           <Hide query={MEDIA_QUERY_SMALL}>
-            <ImageSubtitle bg="backgroundDark">{publishedDate}</ImageSubtitle>
+            <ImageSubtitle bg="secondaryLight">{publishedDate}</ImageSubtitle>
           </Hide>
         </ProjectTag>
       </ImageContainer>
