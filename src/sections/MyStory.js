@@ -5,14 +5,15 @@ import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
 import Section from '../components/Section';
-import { CardContainer, Card } from '../components/Card';
 import SocialLink from '../components/SocialLink';
 import ImageSubtitle from '../components/ImageSubtitle';
 import Hide from '../components/Hide';
-
+import { SectionLink } from 'react-scroll-section';
+import BouncyArrowIcon from '../components/BounceArrow';
+import { StoryContainer, Story as StoryCard } from '../components/Story';
 const Background = () => <div />;
 
-const CARD_HEIGHT = '200px';
+const CARD_HEIGHT = '600px';
 
 const MEDIA_QUERY_SMALL = '@media (max-width: 400px)';
 
@@ -39,13 +40,12 @@ const TextContainer = styled.div`
 const ImageContainer = styled.div`
   margin: auto;
   width: ${CARD_HEIGHT};
-
   ${MEDIA_QUERY_SMALL} {
     width: calc(${CARD_HEIGHT} / 2);
   }
 `;
 
-const ProjectImage = styled(Image)`
+const StoryImage = styled(Image)`
   width: ${CARD_HEIGHT};
   height: ${CARD_HEIGHT};
   padding: 40px;
@@ -59,7 +59,7 @@ const ProjectImage = styled(Image)`
   }
 `;
 
-const ProjectTag = styled.div`
+const StoryTag = styled.div`
   position: relative;
   height: ${CARD_HEIGHT};
   top: calc(
@@ -71,15 +71,15 @@ const ProjectTag = styled.div`
   }
 `;
 
-const Project = ({
+const Story = ({
   name,
   description,
-  projectUrl,
+  companyWebsite,
   type,
-  publishedDate,
+  startAndEndDate,
   logo,
 }) => (
-  <Card p={0}>
+  <StoryCard p={0}>
     <Flex style={{ height: CARD_HEIGHT }}>
       <TextContainer>
         <span>
@@ -93,8 +93,8 @@ const Project = ({
       </TextContainer>
 
       <ImageContainer>
-        <ProjectImage src={logo.image.src} alt={logo.title} />
-        <ProjectTag>
+        <StoryImage src={logo.image.src} alt={logo.title} />
+        <StoryTag>
           <Flex
             style={{
               float: 'right',
@@ -102,9 +102,9 @@ const Project = ({
           >
             <Box mx={1} fontSize={5}>
               <SocialLink
-                name="See project"
+                name={`${companyWebsite}_website`}
                 fontAwesomeIcon="globe"
-                url={projectUrl}
+                url={companyWebsite}
               />
             </Box>
           </Flex>
@@ -112,18 +112,18 @@ const Project = ({
             {type}
           </ImageSubtitle>
           <Hide query={MEDIA_QUERY_SMALL}>
-            <ImageSubtitle bg="secondaryLight">{publishedDate}</ImageSubtitle>
+            <ImageSubtitle bg="secondaryLight">{startAndEndDate}</ImageSubtitle>
           </Hide>
-        </ProjectTag>
+        </StoryTag>
       </ImageContainer>
     </Flex>
-  </Card>
+  </StoryCard>
 );
 
-Project.propTypes = {
+Story.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  projectUrl: PropTypes.string.isRequired,
+  StoryUrl: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   publishedDate: PropTypes.string.isRequired,
   logo: PropTypes.shape({
@@ -133,20 +133,19 @@ Project.propTypes = {
   }).isRequired,
 };
 
-const Projects = () => (
-  <Section.Container id="projects" Background={Background}>
-    <Section.Header name="Work Experience" icon="💻" Box="notebook" />
+const Stories = () => (
+  <Section.Container id="story" Background={Background}>
+    <Section.Header name="My Story" icon="" Box="notebook" />
     <StaticQuery
       query={graphql`
-        query ProjectsQuery {
+        query StoryQuery {
           contentfulAbout {
-            projects {
+            experience {
               id
               name
               description
-              projectUrl
-              repositoryUrl
-              publishedDate(formatString: "YYYY")
+              companyWebsite
+              startAndEndDate
               type
               logo {
                 title
@@ -159,16 +158,19 @@ const Projects = () => (
         }
       `}
       render={({ contentfulAbout }) => (
-        <CardContainer minWidth="350px">
-          {contentfulAbout.projects.map((p, i) => (
+        <StoryContainer minWidth="600px">
+          {contentfulAbout.experience.map((p, i) => (
             <Fade bottom key={p.id} delay={i * 200}>
-              <Project key={p.id} {...p} />
+              <Story key={p.id} {...p} />
             </Fade>
           ))}
-        </CardContainer>
+        </StoryContainer>
       )}
     />
+    <SectionLink section="experience">
+      {({ onClick }) => <BouncyArrowIcon onClick={onClick} />}
+    </SectionLink>
   </Section.Container>
 );
 
-export default Projects;
+export default Stories;

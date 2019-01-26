@@ -1,7 +1,8 @@
 import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
 import React from 'react';
-import arrow from './Logo/Arrow.svg';
+import DownArrow from './Logo/Arrow.svg';
+import UpArrow from './Logo/UpArrow.svg';
 
 const ScrollLink = styled.span`
   position: absolute;
@@ -9,10 +10,6 @@ const ScrollLink = styled.span`
   left: 50%;
   transform: translateX(-50%);
   cursor: pointer;
-
-  @media only screen and (max-width: 700px) {
-    display: none;
-  }
 `;
 
 const BounceAnimation = keyframes`
@@ -36,18 +33,19 @@ const BouncyArrow = styled.div`
   width: 40px;
   height: 40px;
   color: ${props => props.theme.colors.primaryLight};
-  background-image: url(${arrow});
+  background-image: url(${props => props.arrow});
   background-size: contain;
 `;
 
-const BouncyArrowIcon = ({ onClick }) => (
+const BouncyArrowIcon = ({ direction, onClick }) => (
   <ScrollLink onClick={onClick}>
-    <BouncyArrow />
+    <BouncyArrow arrow={direction === 'up' ? UpArrow : DownArrow} />
   </ScrollLink>
 );
 
 BouncyArrowIcon.propTypes = {
   onClick: PropTypes.func,
+  direction: PropTypes.string,
 };
 
 export default BouncyArrowIcon;

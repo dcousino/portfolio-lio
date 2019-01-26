@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactHelmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
-import { withTheme } from 'styled-components';
-import PropTypes from 'prop-types';
+import { primary } from '../../colors';
 
 const Helmet = ({ theme = {} }) => (
   <StaticQuery
@@ -56,6 +55,10 @@ const Helmet = ({ theme = {} }) => (
           <meta name="twitter:title" content={title} />
           <meta name="twitter:description" content={description} />
           <meta name="twitter:image" content={profile.bigIcon.src} />
+          <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content={primary}
+          />
 
           <link
             rel="apple-touch-icon"

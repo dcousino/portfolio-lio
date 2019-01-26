@@ -20,7 +20,10 @@ body {
   margin: 0;
   font-family: Cabin;
   overflow-x: hidden;
+  height: 100%
+  
 }
+
 `;
 
 config({ ssrFadeout: true });

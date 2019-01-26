@@ -8,20 +8,7 @@ import styled from 'styled-components';
 import { secondaryLight } from '../../colors';
 import Section from '../components/Section';
 import SocialLink from '../components/SocialLink';
-import MouseIcon from '../components/BounceArrow';
-
-const LandingPageBg = styled.div`
-  position: absolute;
-  z-index: -2;
-  background-image: url(${props => props.img});
-  width: 100%;
-  background-position: center;
-  height: 100vh;
-  background-size: cover;
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.6);
-`;
-
-const Background = img => <LandingPageBg img={img} />;
+import BouncyArrowIcon from '../components/BounceArrow';
 
 const LandingPage = () => (
   <StaticQuery
@@ -37,7 +24,7 @@ const LandingPage = () => (
             fontAwesomeIcon
           }
         }
-        backgroundImg: file(relativePath: { eq: "landing-background.webp" }) {
+        backgroundImg: file(relativePath: { eq: "alt-background.jpg" }) {
           childImageSharp {
             fluid(maxWidth: 1920) {
               ...GatsbyImageSharpFluid
@@ -52,9 +39,7 @@ const LandingPage = () => (
       return (
         <Section.Container
           id="home"
-          Background={() =>
-            Background(data.backgroundImg.childImageSharp.fluid.src)
-          }
+          img={data.backgroundImg.childImageSharp.fluid.src}
         >
           <Fragment>
             <RubberBand>
@@ -93,7 +78,7 @@ const LandingPage = () => (
               ))}
             </Flex>
             <SectionLink section="about">
-              {({ onClick }) => <MouseIcon onClick={onClick} />}
+              {({ onClick }) => <BouncyArrowIcon onClick={onClick} />}
             </SectionLink>
           </Fragment>
         </Section.Container>

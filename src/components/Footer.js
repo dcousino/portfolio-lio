@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Text, Flex, Box } from 'rebass';
+import { Flex, Box } from 'rebass';
 import Fade from 'react-reveal/Fade';
 import PropTypes from 'prop-types';
 import Portfolio from './Logo/Portfolio.svg';
-import { secondaryLight } from '../../colors';
 
 const FooterContainer = styled.footer`
   padding: 1em;
@@ -14,16 +13,16 @@ const FooterContainer = styled.footer`
   flex: 0 1 auto;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: bottom;
 `;
 
 const RenponsiveLogo = styled.img`
-  width: 100px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
 
   @media (min-width: 400px) {
-    width: 150px;
-    height: 35px;
+    width: 70px;
+    height: 70px;
   }
 `;
 

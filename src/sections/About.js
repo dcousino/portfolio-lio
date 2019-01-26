@@ -6,45 +6,54 @@ import ReactMarkdown from 'react-markdown';
 import Fade from 'react-reveal/Fade';
 import Section from '../components/Section';
 import markdownRenderer from '../components/MarkdownRenderer';
-
-const Background = () => <div />;
+import { SectionLink } from 'react-scroll-section';
+import BouncyArrowIcon from '../components/BounceArrow';
 
 const ProfilePicture = styled(Image)`
   border-radius: 50%;
   transition: all 0.25s ease-out;
-
+  background: transparent;
   &:hover {
     border-radius: 10%;
   }
 `;
 
 const About = () => (
-  <Section.Container id="about" Background={Background}>
-    <Section.Header name="About me" icon="" label="person" />
-    <StaticQuery
-      query={graphql`
-        query AboutMeQuery {
-          contentfulAbout {
-            aboutMe {
-              childMarkdownRemark {
-                rawMarkdownBody
-              }
+  <StaticQuery
+    query={graphql`
+      query AboutMeQuery {
+        contentfulAbout {
+          aboutMe {
+            childMarkdownRemark {
+              rawMarkdownBody
             }
-            profile {
-              title
-              image: fluid(maxWidth: 450) {
-                src
-                srcWebp
-              }
+          }
+          profile {
+            title
+            image: fluid(maxWidth: 450) {
+              src
             }
           }
         }
-      `}
-      render={data => {
-        const { aboutMe, profile } = data.contentfulAbout;
-        return (
+        backgroundImg: file(relativePath: { eq: "about-background.jpg" }) {
+          childImageSharp {
+            fluid(maxWidth: 1920) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    `}
+    render={data => {
+      const { aboutMe, profile } = data.contentfulAbout;
+      return (
+        <Section.Container
+          id="about"
+          img={data.backgroundImg.childImageSharp.fluid.src}
+        >
+          <Section.Header name="About me" icon="" label="person" />
           <Flex justifyContent="center" alignItems="center" flexWrap="wrap">
-            <Box width={[1, 1, 4 / 6]} px={[1, 2, 4]}>
+            <Box color="white" width={[1, 1, 4 / 6]} px={[1, 2, 4]}>
               <Fade bottom>
                 <ReactMarkdown
                   source={aboutMe.childMarkdownRemark.rawMarkdownBody}
@@ -67,10 +76,13 @@ const About = () => (
               </Fade>
             </Box>
           </Flex>
-        );
-      }}
-    />
-  </Section.Container>
+          <SectionLink section="experience">
+            {({ onClick }) => <BouncyArrowIcon onClick={onClick} />}
+          </SectionLink>
+        </Section.Container>
+      );
+    }}
+  />
 );
 
 export default About;

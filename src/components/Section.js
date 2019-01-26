@@ -19,11 +19,20 @@ const SectionContainer = styled.div`
   scroll-behavior: smooth;
 `;
 
-const DefaultBackground = () => <div />;
+const Background = styled.div`
+  position: absolute;
+  z-index: -2;
+  background-image: url(${props => props.img});
+  width: 100%;
+  background-position: center;
+  height: 100%;
+  background-size: cover;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.6);
+`;
 
-const Container = ({ id, children, Background = DefaultBackground }) => (
+const Container = ({ id, children, img }) => (
   <Section id={id} style={{ position: 'relative' }}>
-    <Background />
+    <Background img={img} />
     <SectionContainer>{children}</SectionContainer>
   </Section>
 );
