@@ -8,6 +8,7 @@ import Section from '../components/Section';
 import markdownRenderer from '../components/MarkdownRenderer';
 import { SectionLink } from 'react-scroll-section';
 import BouncyArrowIcon from '../components/BounceArrow';
+import Pic from '../components/Logo/drc-logo.svg';
 
 const ProfilePicture = styled(Image)`
   border-radius: 50%;
@@ -68,7 +69,7 @@ const About = () => (
             >
               <Fade right>
                 <ProfilePicture
-                  src={profile.image.src}
+                  src={Pic}
                   alt={profile.title}
                   mt={[4, 4, 0]}
                   ml={[0, 0, 1]}

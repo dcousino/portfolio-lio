@@ -51,7 +51,6 @@ const Helmet = ({ theme = {} }) => (
           <meta name="og:site_name" content={title} />
           <meta name="og:locale" content="en_US" />
           <meta name="og:type" content="website" />
-
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:title" content={title} />
           <meta name="twitter:description" content={description} />

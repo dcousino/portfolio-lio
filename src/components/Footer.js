@@ -11,6 +11,8 @@ const FooterContainer = styled.footer`
   color: ${props => props.theme.colors.background};
   display: flex;
   flex: 0 1 auto;
+
+  align-self: flex-end;
   flex-direction: column;
   justify-content: center;
   align-items: bottom;
