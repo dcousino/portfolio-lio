@@ -86,6 +86,7 @@ const ContactForm = () => {
           </Link>
         </BackButton>
         <Form name="contact" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="contact" />
           <p>
             <Label>
               Email: <Input type="text" name="name" />
