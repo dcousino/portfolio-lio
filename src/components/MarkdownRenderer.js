@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const StyledLink = styled.a`
   display: inline-block;
   transition: color 250ms, text-shadow 250ms;
-  color: black;
+  color: ${props => props.theme.colors.secondaryLight};
   text-decoration: none;
   cursor: pointer;
   position: relative;

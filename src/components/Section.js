@@ -22,12 +22,17 @@ const SectionContainer = styled.div`
 const Background = styled.div`
   position: absolute;
   z-index: -2;
-  background-image: url(${props => props.img});
+  background-image: radial-gradient(
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 1)
+    ),
+    url(${props => props.img});
   width: 100%;
   background-position: center;
   height: 100%;
   background-size: cover;
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
 `;
 
 const Container = ({ id, children, img }) => (

@@ -36,7 +36,7 @@ const About = () => (
             }
           }
         }
-        backgroundImg: file(relativePath: { eq: "about-background.jpg" }) {
+        backgroundImg: file(relativePath: { eq: "about-bg.jpg" }) {
           childImageSharp {
             fluid(maxWidth: 1920) {
               ...GatsbyImageSharpFluid

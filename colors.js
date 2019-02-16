@@ -12,5 +12,5 @@ module.exports = {
   secondaryLight: '#fd977b',
   secondaryVeryLight: '#fff0ed',
 
-  secondaryDark: '#e03203',
+  secondaryDark: '#fc5e33',
 };

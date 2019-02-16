@@ -153,7 +153,7 @@ const Experiences = () => (
             }
           }
         }
-        backgroundImg: file(relativePath: { eq: "about-background.jpg" }) {
+        backgroundImg: file(relativePath: { eq: "expirience-bg.jpg" }) {
           childImageSharp {
             fluid(maxWidth: 1920) {
               ...GatsbyImageSharpFluid
