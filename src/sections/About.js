@@ -54,7 +54,12 @@ const About = () => (
         >
           <Section.Header name="About me" icon="" label="person" />
           <Flex justifyContent="center" alignItems="center" flexWrap="wrap">
-            <Box color="white" width={[1, 1, 4 / 6]} px={[1, 2, 4]}>
+            <Box
+              color="white"
+              fontSize={[1, 2, 4]}
+              width={[1, 1, 4 / 6]}
+              px={[1, 2, 4]}
+            >
               <Fade bottom>
                 <ReactMarkdown
                   source={aboutMe.childMarkdownRemark.rawMarkdownBody}

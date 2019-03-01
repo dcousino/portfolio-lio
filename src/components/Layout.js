@@ -18,7 +18,7 @@ body {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0;
-  font-family: Cabin;
+  font-family: Montserrat, sans-serif;
   overflow-x: hidden;
   height: 100%
   
